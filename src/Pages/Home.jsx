@@ -10,8 +10,7 @@ const Home = () => {
 
     return (
         <Box>
-            {/*<InputTodos />*/}
-            {/*<TodoList />*/}
+            <TodoList />
             <Category />
         </Box>
     );

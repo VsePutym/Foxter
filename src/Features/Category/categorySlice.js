@@ -5,27 +5,24 @@ import {
     getDocs,
     getFirestore,
     setDoc,
-    arrayRemove,
     updateDoc,
     arrayUnion,
-    decrement,
     increment,
     deleteDoc
 } from "firebase/firestore";
 import {arrDecrementChange, arrChanges} from "../../Functions/categories";
+
 
 export const createCategory = createAsyncThunk(
     '@@createCategory/create',
     async (dataCategory) => {
         const db = getFirestore();
         const title = dataCategory.title;
-        let limit = dataCategory.limit
 
-        return await setDoc(doc(db, `category`, `${title}`), dataCategory).then(() => {
+        return await setDoc(doc(db, `category`, `${title}`), {...dataCategory}).then(() => {
             return {...dataCategory}
         })
     }
-
 )
 
 export const loadCategory = createAsyncThunk(
@@ -36,9 +33,11 @@ export const loadCategory = createAsyncThunk(
         const colRef = collection(db, 'category')
         return await getDocs(colRef).then((snapshot) => {
             const category = [];
+
             snapshot.docs.forEach((doc) => {
                 category.push({...doc.data(), id: doc.id})
             })
+
             return category
         })
     }
@@ -48,7 +47,7 @@ export const loadCategory = createAsyncThunk(
 
 export const addSpending = createAsyncThunk(
     '@@category/change-arrPlus',
-    async(dataCategory, {getState}) => {
+    async (dataCategory, {getState}) => {
 
         const data = arrChanges(dataCategory);
         const oldArrPlus = getState().category.entities[data.name].arrSpending;
@@ -58,13 +57,12 @@ export const addSpending = createAsyncThunk(
 
         const lineProgress = 100 / (limit / newLimitBalances)
 
-
-        return await  updateDoc(data.refCategory, {
+        return await updateDoc(data.refCategory, {
             arrSpending: arrayUnion(data.arrPlusData),
             limitBalances: increment(valueLimit),
             lineProgress: lineProgress
         }).then(() => {
-            return {...dataCategory, oldArrPlus, newLimitBalances , lineProgress}
+            return {...dataCategory, oldArrPlus, newLimitBalances, lineProgress}
         })
     }
 )
@@ -98,36 +96,8 @@ export const deleteSpending = createAsyncThunk(
     }
 )
 
-export const report = createAsyncThunk(
-    '@@category/report',
-    async (_,{getState}) => {
-        const arr = getState().category.entities;
-        const days =[{month: "January", id: 1}, {month: 'February', id: 2}, {month: 'March', id: 3}, {month: 'April', id: 4}, {month: 'May', id: 5}, {month: 'June', id: 6}, {month: 'August', id: 7}, {month: 'September', id: 8}, {month: 'October', id: 9}, {month: 'November', id: 10}, {month: 'December', id: 11}, {month: 'December', id: 12}];
-        let arrMonth = [];
-
-        const date = new Date().getMonth() + 1
-        for (const key in arr) {
-            arrMonth.push(arr[key])
-        }
-        let newDate;
-
-        days.map((item) => {
-            if(item.id === date){
-                newDate = item.month
-            }
-        })
-
-        const db = getFirestore();
-
-        return await setDoc(doc(db, `report`, `${newDate}`), {arrMonth}).then(() => {
-            return arrMonth
-        })
-
-    }
-)
-
 export const deleteCategory = createAsyncThunk(
-    '@@todos/category-deleted',
+    '@@category/category-deleted',
     async (id) => {
         const db = getFirestore();
         const docRef = doc(db, 'category', `${id}`);
@@ -137,21 +107,47 @@ export const deleteCategory = createAsyncThunk(
     }
 )
 
-export const loadReport = createAsyncThunk(
-    '@@category/load-report',
+export const resetCategory = createAsyncThunk(
+    '@@category/category-reset',
     async () => {
 
         const db = getFirestore();
-        const colRef = collection(db, 'report')
-        return await getDocs(colRef).then((snapshot) => {
-            const category = [];
-            snapshot.docs.forEach((doc) => {
-                category.push({...doc.data(), id: doc.id})
+        const docRef = collection(db, "category");
+
+        return await getDocs(docRef).then((snapshot) => {
+
+            const results = snapshot.docs.map((doc) => ({...doc.data(), id: doc.id}))
+
+            results.forEach(async (result) => {
+                const docRef = doc(db, 'category', `${result.title}`);
+
+                return await updateDoc(docRef, {
+                    limitBalances: 0,
+                    lineProgress: 0,
+                    arrSpending: []
+                })
             })
-            return category
         })
     }
 )
+
+
+export const changeLimitCategory = createAsyncThunk(
+    '@@category/changeLimit',
+    async (data) => {
+        const title = data.title;
+        const newLimit = data.newLimit;
+        const db = getFirestore();
+        const docRef = doc(db, "category", `${title}`);
+
+        return await updateDoc(docRef, {
+      limit: newLimit
+        }).then(() => {
+            return {newLimit, title}
+        })
+    }
+)
+
 
 const adapterCategory = createEntityAdapter({})
 
@@ -159,30 +155,26 @@ export const categorySlice = createSlice({
         name: 'categorySlice',
         initialState: adapterCategory.getInitialState({
             status: 'none',
-            error: null,
-            reports : []
+            error: null
         }),
-        reducers: {
-
-        },
+        reducers: {},
         extraReducers: builder => {
             builder
-            .addCase(createCategory.fulfilled, (state, action) => {
-                adapterCategory.addOne(state, action.payload)
-            })
-                .addCase(loadCategory.fulfilled, (state, action) => {
-                    adapterCategory.addMany(state, action.payload)
-            })
-                .addCase(loadReport.fulfilled, (state, action) => {
-                    state.reports = action.payload;
+                .addCase(createCategory.fulfilled, (state, action) => {
+                    adapterCategory.addOne(state, action.payload)
                 })
-                .addCase(addSpending.fulfilled, (state,action) => {
+                .addCase(loadCategory.fulfilled, (state, action) => {
+                    adapterCategory.addMany(state, action.payload);
+                    state.status = 'idle';
+                    state.error = null;
+                })
+                .addCase(addSpending.fulfilled, (state, action) => {
                     const updateCategory = action.payload;
                     const value = Number(updateCategory.value)
 
                     const newItem = {
                         id: updateCategory.id,
-                        value : value
+                        value: value
                     }
 
                     const oldArrPlus = action.payload.oldArrPlus;
@@ -218,11 +210,20 @@ export const categorySlice = createSlice({
                 })
                 .addCase(deleteCategory.fulfilled, (state, action) => {
                     const id = action.payload;
-
                     adapterCategory.removeOne(state, id)
                 })
-                .addCase(report.fulfilled, (state, action) => {
-                    state.reports = action.payload;
+                .addCase(resetCategory.fulfilled, (state, action) => {
+                    adapterCategory.removeAll(state)
+                })
+                .addCase(changeLimitCategory.fulfilled, (state, action) => {
+                    const updateCategory = action.payload;
+                     adapterCategory.updateOne(state, {
+                         id: updateCategory.title,
+                         changes: {
+                             limit: updateCategory.newLimit
+                         }
+                         }
+                     )
                 })
         }
     }
@@ -232,6 +233,6 @@ export const categorySlice = createSlice({
 export const reducerCategory = categorySlice.reducer
 export const categorySelector = adapterCategory.getSelectors((state) => state.category);
 export const categorySpending = adapterCategory.getSelectors((state) => state.category);
-export const reportSelectors = ((state) => state.category.reports);
+
 
 

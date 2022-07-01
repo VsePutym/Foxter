@@ -16,9 +16,9 @@ const HomeIcon = createSvgIcon(
 const Menu = ({closeMenu, openMenu}) => {
 
     const DrawMenu = [
-        {name: 'Home', id: 0, href: '/home',img:<HomeIcon sx={{p:3}} color="primary" />},
-        {name: 'Statistic', id: 1, href: '/statistic', img: <AutoGraphIcon color="primary" sx={{p:3}}/>},
-        {name: 'Create Category', id: 2, href: '/createCategory', img: <AddBoxIcon color="primary" sx={{p:3}}/>}
+        {name: 'Главная', id: 0, href: '/home',img:<HomeIcon sx={{p:3}} color="primary" />},
+        {name: 'Статистика', id: 1, href: '/statistic', img: <AutoGraphIcon color="primary" sx={{p:3}}/>},
+        {name: 'Создание', id: 2, href: '/createCategory', img: <AddBoxIcon color="primary" sx={{p:3}}/>}
         ];
 
     return (
@@ -30,7 +30,7 @@ const Menu = ({closeMenu, openMenu}) => {
                             {item.img}
                         </ListItemIcon>
                         <Box>
-                            <Typography color={'white'} >{item.name}</Typography>
+                            <Typography color={'black'} >{item.name}</Typography>
                         </Box>
                     </ListItemButton>
                     <Divider />

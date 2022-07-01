@@ -1,43 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd0f15b2-9e03-4502-931c-6e107fb2ad9a" name="Default Changelist" comment="first commit">
-      <change afterPath="$PROJECT_DIR$/src/Features/Category/Category.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Features/Category/categorySlice.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Features/Category/useLoadCategory.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Features/Category/useStatisticCategory.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Features/Report/reportSlice.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Features/Report/useLoadReport.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Features/Report/useReportToDo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Features/Statistic/Statistic.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Features/Statistic/useStatistic.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Features/Todos/InputTodos.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Features/Todos/TodoList.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Features/Todos/todosSlice.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Features/Todos/useLoadTodos.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Firebase.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Functions/categories.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Pages/CreateCategory.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Pages/Home.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Root.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Bar.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Headers.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Menu/Menu.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Menu/useMenu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+    <list default="true" id="fd0f15b2-9e03-4502-931c-6e107fb2ad9a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Features/Category/AccordionCategory.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Features/Category/AddSpending.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Features/Category/ChangeLimit.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Features/Category/DeleteCategory.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Features/Category/DeleteSpending.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Features/Category/LinearProgress.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Features/Category/useLoadCreateCategory.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Features/Statistic/Diagramma.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Features/Todos/NewChapter.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Functions/reports.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/BarChart.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/HandChapter.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Loading.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/logo192.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/logo192.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/logo512.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/logo512.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Features/Category/Category.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Features/Category/Category.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Features/Category/categorySlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Features/Category/categorySlice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Features/Category/useLoadCategory.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Features/Category/useLoadCategory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Features/Report/reportSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Features/Report/reportSlice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Features/Report/useLoadReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Features/Report/useLoadReport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Features/Report/useReportToDo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Features/Statistic/Statistic.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Features/Statistic/Statistic.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Features/Statistic/useStatistic.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Features/Todos/InputTodos.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Features/Todos/InputTodos.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Features/Todos/TodoList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Features/Todos/TodoList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Features/Todos/todosSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Features/Todos/todosSlice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Features/Todos/useLoadTodos.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Features/Todos/useLoadTodos.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Firebase.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/CreateCategory.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/CreateCategory.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Root.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Root.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Bar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Bar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Headers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Headers.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Menu/Menu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Menu/Menu.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reportWebVitals.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setupTests.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +65,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Features/Report" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../FoxterProdaction" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -76,11 +82,12 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\IT\Project\React\Foxter\foxter\src\Features\Report" />
       <recent name="D:\IT\Project\React\Foxter\foxter\src\Features\Category" />
+      <recent name="D:\IT\Project\React\Foxter\foxter\src\Features\Report" />
       <recent name="D:\IT\Project\React\Foxter\foxter\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\IT\Project\React\Foxter\foxter\src\Hooks" />
       <recent name="D:\IT\Project\React\Foxter\foxter\src\components" />
       <recent name="D:\IT\Project\React\Foxter\foxter\src" />
       <recent name="D:\IT\Project\React\Foxter\foxter\src\Pages" />
@@ -131,7 +138,39 @@
       <workItem from="1653169552266" duration="1954000" />
       <workItem from="1653328059386" duration="30859000" />
       <workItem from="1653398467986" duration="2891000" />
-      <workItem from="1653407323301" duration="2323000" />
+      <workItem from="1653407323301" duration="5005000" />
+      <workItem from="1653654361827" duration="34105000" />
+      <workItem from="1653727231870" duration="8816000" />
+      <workItem from="1653738756466" duration="149000" />
+      <workItem from="1653999885497" duration="14487000" />
+      <workItem from="1654068057832" duration="2386000" />
+      <workItem from="1654072359492" duration="1218000" />
+      <workItem from="1654115051483" duration="1685000" />
+      <workItem from="1654161629342" duration="12573000" />
+      <workItem from="1654177791715" duration="6120000" />
+      <workItem from="1654457054125" duration="1214000" />
+      <workItem from="1654500354574" duration="2204000" />
+      <workItem from="1654519969474" duration="6477000" />
+      <workItem from="1654619357267" duration="1798000" />
+      <workItem from="1654684540464" duration="32852000" />
+      <workItem from="1654728724633" duration="8887000" />
+      <workItem from="1654818570812" duration="3460000" />
+      <workItem from="1654852368712" duration="38634000" />
+      <workItem from="1655131814730" duration="3258000" />
+      <workItem from="1655284396889" duration="10238000" />
+      <workItem from="1655458759730" duration="33858000" />
+      <workItem from="1655507312711" duration="2226000" />
+      <workItem from="1655538257147" duration="3410000" />
+      <workItem from="1655573362239" duration="935000" />
+      <workItem from="1655709160401" duration="1925000" />
+      <workItem from="1655741031561" duration="3344000" />
+      <workItem from="1655762131100" duration="1163000" />
+      <workItem from="1656421695649" duration="6626000" />
+      <workItem from="1656491954409" duration="16608000" />
+      <workItem from="1656516846684" duration="7259000" />
+      <workItem from="1656668101515" duration="7562000" />
+      <workItem from="1656676321400" duration="16000" />
+      <workItem from="1656690705790" duration="3109000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1649943106395</created>
@@ -140,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649943106395</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="category">
+      <created>1653409753342</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1653409753342</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,16 +206,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/Features/Report/useReportToDo.js</url>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="category" />
+    <option name="LAST_COMMIT_MESSAGE" value="category" />
   </component>
 </project>

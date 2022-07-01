@@ -4,18 +4,20 @@ import {persistReducer, persistStore,FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, RE
 import {todosReducer} from "./Features/Todos/todosSlice";
 import * as api from './Firebase'
 import {reducerCategory} from "./Features/Category/categorySlice";
+import {reportReducer} from "./Features/Report/reportSlice";
 
 
 
 const persistConfig = {
     key: 'root',
     storage,
-    blacklist: ["todos", 'category']
+    blacklist: ["todos", 'category', 'reports']
 }
 
 const rootReducer = combineReducers({
     todos: todosReducer,
-    category: reducerCategory
+    category: reducerCategory,
+    reports: reportReducer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

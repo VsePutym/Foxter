@@ -1,16 +1,16 @@
 import {useEffect} from "react";
 import {toast} from "react-toastify";
 import {useDispatch} from "react-redux";
-import {loadTodos} from "./todosSlice";
+import {createCategory} from "./categorySlice";
 
-export const useLoadTodos = () => {
+export const useLoadCategory = (dataCategory) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const promise = dispatch(loadTodos())
+        const promise = dispatch(createCategory(dataCategory))
             .unwrap()
             .then(() => {
-                toast.success('🦄 Upload was successful', {
+                toast.success(' 🐼  Loading category successful', {
                     position: "top-center",
                     autoClose: 1000,
                     hideProgressBar: false,

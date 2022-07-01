@@ -1,7 +1,8 @@
 import {useEffect} from "react";
 import {toast} from "react-toastify";
 import {useDispatch} from "react-redux";
-import {loadReport} from "../Category/categorySlice";
+import {loadReport} from "./reportSlice";
+
 
 
 export const useLoadReport = () => {
@@ -11,9 +12,9 @@ export const useLoadReport = () => {
         const promise = dispatch(loadReport())
             .unwrap()
             .then(() => {
-                toast.success('🦄 Upload was successful', {
+                toast.success(' 📈  Загрузка отчётов выполненна', {
                     position: "top-center",
-                    autoClose: 1000,
+                    autoClose: 2000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: true,

@@ -6,7 +6,7 @@ export const Bar = styled.div`
   transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   box-shadow: 6px 5px 13px black;
   background-image: linear-gradient(rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.09));
-  background-color: #121212;
+  background-color: #0097a7;
   color: #fff;
   display: flex;
   box-sizing: border-box;

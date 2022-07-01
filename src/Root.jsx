@@ -5,14 +5,22 @@ import { PersistGate } from 'redux-persist/integration/react'
 import React from "react";
 import {createTheme, ThemeProvider} from "@mui/material";
 import {Provider} from "react-redux";
+import { cyan } from '@mui/material/colors';
 
 const theme = createTheme({
-    palette:{
+    palette: {
+        type: 'light',
         primary: {
-            main: '#18ffff'
+            main: '#0097a7',
         },
-        mode: 'dark'
-    }
+        secondary: {
+            main: '#f50057',
+        },
+        background: {
+            paper: '#ffffff',
+            default: '#e0f7fa',
+        },
+    },
 });
 
 const Root = ({store, persistor}) => {

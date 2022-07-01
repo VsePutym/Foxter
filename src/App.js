@@ -6,7 +6,7 @@ import Home from "./Pages/Home";
 import {Container} from "@mui/material";
 import Statistic from "./Features/Statistic/Statistic";
 import CreateCategory from "./Pages/CreateCategory";
-import {useLoadCategory} from "./Features/Category/useLoadCategory";
+
 
 
 

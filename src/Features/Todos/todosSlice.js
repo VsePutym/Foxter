@@ -1,5 +1,5 @@
 import {createAsyncThunk, createEntityAdapter, createSlice} from "@reduxjs/toolkit";
-import {setDoc, deleteDoc, updateDoc, collection, doc, getDocs, getFirestore} from "firebase/firestore";
+import {setDoc, deleteDoc, updateDoc, collection, doc, getDocs, getFirestore, arrayUnion} from "firebase/firestore";
 
 
 export const loadTodos = createAsyncThunk(
@@ -10,7 +10,7 @@ export const loadTodos = createAsyncThunk(
         return await getDocs(colRef).then((snapshot) => {
             const todos = [];
             snapshot.docs.forEach((doc) => {
-                todos.push({...doc.data(), id: doc.id})
+                todos.push({...doc.data()})
             })
             return todos
         })
@@ -18,56 +18,64 @@ export const loadTodos = createAsyncThunk(
     }
 )
 
-export const toggleValue = createAsyncThunk(
-    '@@todos/todos-toggleValue',
-    async ({id, initialValue, value}, {getState}) => {
-        const db = getFirestore();
-        const todo = getState().todos.entities[id]
-        const test = todo.completed === true ?  0 : initialValue
-        return await updateDoc(doc(db, 'todos', `${id}`), {
-            value: test
-        }).then(() => {
-            return {id,test}
-        }).catch((err) => {
-            console.log(err)
-        })
-    }
-)
-
-export const toggleTodo = createAsyncThunk(
-    'todos/todo-completed',
-    async (id, {getState}) => {
-        const todo = getState().todos.entities[id]
-        const db = getFirestore();
-        return await updateDoc(doc(db, "todos", `${id}`), {
-            completed: !todo.completed
-        }).then(() => {
-            return todo
-        })
-    }
-)
 
 export const createTodo = createAsyncThunk(
     '@@todos/todo-create',
     async (dataTodos) => {
         const db = getFirestore();
-        const id = dataTodos.id
-        if (dataTodos.value === '') {
-            dataTodos.value = 0;
-        }
-        return await setDoc(doc(db, "todos", `${id}`), dataTodos).then(() => {
+        const label = dataTodos.label;
+        const todoRef = doc(db, "todos", `${label}`)
+        return await setDoc(todoRef, dataTodos).then(() => {
             return {...dataTodos}
         })
     }
 )
 
-export const deleteTodo = createAsyncThunk(
-    '@@todos/todo-deleted',
-    async (id) => {
+export const deleteMaineTodo = createAsyncThunk(
+    '@@todos/deleted-MaineTodo',
+    async (data) => {
         const db = getFirestore();
-        const docRef = doc(db, 'todos', `${id}`);
+        const docRef = doc(db, 'todos', `${data.label}`);
         return await deleteDoc(docRef).then(() => {
-            return id
+            return data.id
+        })
+    }
+)
+
+export const deleteTodo = createAsyncThunk(
+    '@@todos/deleted-todo',
+    async (data, {getState}) => {
+        const db = getFirestore();
+       const newArrTodo =  data.titleTodo.arrTodos.filter((item) => item !== data.todo)
+        const id = data.titleTodo.id;
+        const docRef = doc(db, 'todos', `${data.titleTodo.label}`);
+        return await updateDoc(docRef, {
+            arrTodos: newArrTodo
+        }).then(() => {
+            return {newArrTodo, id}
+        })
+    }
+)
+
+export const addTodoInChapter = createAsyncThunk(
+    '@@todos/chapter/newToDo',
+    async (data, {getState}) => {
+        const selector = data.selectTitle;
+        const idForSelector = data.idSelector
+        delete data.idSelector
+        const db = getFirestore();
+        const todoSelectorArr  = getState().todos.entities[idForSelector].arrTodos;
+        let newArr = [];
+        todoSelectorArr.forEach((item) => {
+            newArr.push(item)
+        })
+        newArr.push(data)
+
+        const docRef = doc(db, 'todos', `${selector}`);
+        return await updateDoc(docRef, {
+            arrTodos: arrayUnion(data)
+        }).then(() => {
+            return {newArr, idForSelector}
         })
     }
 )
@@ -75,7 +83,7 @@ export const deleteTodo = createAsyncThunk(
 
 const todosAdapter = createEntityAdapter({})
 
-const todosSLice = createSlice({
+export const todosSLice = createSlice({
     name: '@@todos',
     initialState: todosAdapter.getInitialState({
         status: 'none',
@@ -85,36 +93,39 @@ const todosSLice = createSlice({
     extraReducers: builder => {
         builder
             .addCase(loadTodos.fulfilled, (state, action) => {
-                todosAdapter.addMany(state, action.payload)
+                todosAdapter.addMany(state, action.payload);
                 state.status = 'idle';
-                state.error = null;
-            })
-            .addCase(loadTodos.pending, (state) => {
-                state.status = 'loading';
                 state.error = null;
             })
             .addCase(createTodo.fulfilled, (state, action) => {
                 todosAdapter.addOne(state, action.payload)
             })
-            .addCase(deleteTodo.fulfilled, (state, action) => {
-                todosAdapter.removeOne(state, action.payload)
-            })
-            .addCase(toggleValue.fulfilled, (state, action) => {
-                const updateTodo = action.payload
-                console.log(updateTodo)
+            .addCase(addTodoInChapter.fulfilled, (state, action) => {
+                const updateData = action.payload;
+                const newArr = updateData.newArr;
+                const id  = updateData.idForSelector;
+
+
                 todosAdapter.updateOne(state, {
-                    id: updateTodo.id,
+                    id: id,
                     changes: {
-                        value: updateTodo.test
+                        arrTodos: newArr
                     }
                 })
             })
-            .addCase(toggleTodo.fulfilled, (state, action) => {
-                const updateTodo = action.payload;
+            .addCase(deleteMaineTodo.fulfilled, (state, action) => {
+                const id = action.payload;
+                todosAdapter.removeOne(state, id)
+            })
+            .addCase(deleteTodo.fulfilled, (state, action) => {
+                const updateData = action.payload;
+                const id = updateData.id
+                const arr = updateData.newArrTodo
+
                 todosAdapter.updateOne(state, {
-                    id: updateTodo.id,
+                    id: id,
                     changes: {
-                        completed: !updateTodo.completed
+                        arrTodos: arr
                     }
                 })
             })

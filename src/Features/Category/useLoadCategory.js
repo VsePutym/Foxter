@@ -10,7 +10,7 @@ export const useLoadCategory = () => {
         const promise = dispatch(loadCategory())
             .unwrap()
             .then(() => {
-                toast.success('🦄 Upload was successful', {
+                toast.success(' 👾  Загрузка категорий выполненна', {
                     position: "top-center",
                     autoClose: 1000,
                     hideProgressBar: false,

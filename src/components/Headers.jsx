@@ -19,7 +19,7 @@ const Headers = ({openMenu}) => {
     return (
         // <AppBar>
          <Bar position={"static"}>
-            <Container  maxWidth="xl" sx={{alignItems: 'center', display: "flex", justifyContent:'center', }}>
+            <Container  maxWidth="xl" sx={{alignItems: 'center', display: "flex", justifyContent:'center'}}>
                 <IconButton
                     size="large"
                     edge="start"
